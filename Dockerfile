@@ -24,16 +24,16 @@ COPY --from=add-webmin-src /etc/apt/sources.list /etc/apt/sources.list
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 
 RUN set -e \
+    && rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get update -y \
+    && apt-get update \
     && apt-get install -yq \
         less \
         nano \
         bind9=1:${BIND_VERSION}* \
         bind9utils=1:${BIND_VERSION}* \
         dnsutils \
-        webmin=${WEBMIN_VERSION}* \ 
-        ntp 
+        webmin=${WEBMIN_VERSION}*  
 
 RUN chmod +x /tini
 
