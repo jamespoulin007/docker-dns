@@ -39,4 +39,4 @@ Thumbs.db
 # Ignore test scripts #
 #######################
 testing.sh
-rsyslog.sh
+rsyslog.conf
